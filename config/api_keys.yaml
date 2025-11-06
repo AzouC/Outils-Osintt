@@ -1,0 +1,72 @@
+# config/api_keys.yaml
+# OSINT Framework Pro - Configuration des APIs
+# Obtenez ces clés gratuitement ou payantes selon les services
+
+# === SHODAN (Essentiel pour IP/Domaines) ===
+shodan:
+  api_key: "VOTRE_CLE_SHODAN_ICI"
+  # Gratuit: 100 résultats/mois | Payant: à partir de $59/mois
+
+# === TWITTER (Optionnel) ===
+twitter:
+  consumer_key: "VOTRE_TWITTER_CONSUMER_KEY"
+  consumer_secret: "VOTRE_TWITTER_CONSUMER_SECRET"
+  access_token: "VOTRE_TWITTER_ACCESS_TOKEN"
+  access_token_secret: "VOTRE_TWITTER_ACCESS_TOKEN_SECRET"
+  # Obtenu via: https://developer.twitter.com/
+
+# === TELEGRAM (Optionnel) ===
+telegram:
+  api_id: "VOTRE_TELEGRAM_API_ID"
+  api_hash: "VOTRE_TELEGRAM_API_HASH"
+  # Obtenu via: https://my.telegram.org/auth
+
+# === INSTAGRAM (Optionnel) ===
+instagram:
+  session_id: "VOTRE_SESSION_ID_INSTAGRAM"
+  # Récupéré depuis les cookies de votre navigateur connecté à Instagram
+
+# === HAVE I BEEN PWNED (Recommandé) ===
+hibp:
+  api_key: "VOTRE_HIBP_API_KEY"
+  # Gratuit: 1500 req/mois | https://haveibeenpwned.com/API/Key
+
+# === GOOGLE CUSTOM SEARCH (Optionnel) ===
+google:
+  api_key: "VOTRE_GOOGLE_API_KEY"
+  cse_id: "VOTRE_GOOGLE_CSE_ID"
+  # https://developers.google.com/custom-search/v1/introduction
+
+# === BLOCKCHAIN (Optionnel) ===
+blockchain:
+  etherscan_api: "VOTRE_ETHERSCAN_API_KEY"
+  blockchain_com_api: "VOTRE_BLOCKCHAIN_COM_API_KEY"
+  # Etherscan: https://etherscan.io/register
+  # Blockchain.com: https://www.blockchain.com/explorer/api
+
+# === VIRUSTOTAL (Recommandé) ===
+virustotal:
+  api_key: "VOTRE_VIRUSTOTAL_API_KEY"
+  # Gratuit: 500 req/jour | https://www.virustotal.com/gui/join-us
+
+# === SPYSE (Optionnel) ===
+spyse:
+  api_key: "VOTRE_SPYSE_API_KEY"
+  # https://spyse.com/
+
+# === SECURITYTRAILS (Optionnel) ===
+securitytrails:
+  api_key: "VOTRE_SECURITYTRAILS_API_KEY"
+  # https://securitytrails.com/
+
+# === CONFIGURATION TOR ===
+tor:
+  enabled: true
+  socks_port: 9050
+  control_port: 9051
+
+# === CONFIGURATION PROXIES ===
+proxies:
+  - "socks5://127.0.0.1:9050"  # Tor par défaut
+  - "http://proxy1.example.com:8080"
+  - "http://proxy2.example.com:8080"
