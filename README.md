@@ -11,6 +11,6 @@ Outil d'OSINT développé en Python pour la recherche d'informations.
 
 ## Installation
 ```bash
-git clone https://github.com/AzouC/Outils-Osint.git
+git clone https://github.com/AzouC/Outils-Osintt.git
 cd Outils-Osint
 pip install -r requirements.txt
