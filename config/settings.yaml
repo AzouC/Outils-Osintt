@@ -1,0 +1,45 @@
+# config/settings.yaml - CONFIGURATION OBLIGATOIRE
+app:
+  name: "OSINT Framework Pro"
+  version: "1.0.0"
+  debug: false
+  secret_key: "change-this-in-production-12345"
+  
+investigation:
+  default_depth: 2
+  max_concurrent_requests: 10
+  request_timeout: 30
+  rate_limit_delay: 1
+
+security:
+  use_tor: true
+  proxy_rotation: true
+  user_agent_rotation: true
+  encrypt_local_data: true
+  
+ai:
+  enabled: true
+  sentiment_analysis: true
+  entity_recognition: true
+  risk_assessment: true
+
+export:
+  default_formats: ["json", "html"]
+  include_timestamps: true
+  compress_exports: true
+
+logging:
+  level: "INFO"
+  file: "logs/osint.log"
+  max_size: "10MB"
+  backup_count: 5
+
+database:
+  enabled: true
+  type: "json"  # json, sqlite, postgresql
+  path: "data/databases/"
+  
+monitoring:
+  enabled: false
+  check_interval: 3600  # 1 heure
+  alert_webhook: ""
