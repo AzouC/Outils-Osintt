@@ -1,46 +1,58 @@
-# docker-compose.yml
 version: '3.8'
 
 services:
-  osint-app:
-    build: .
-    ports:
-      - "5000:5000"
-      - "8080:8080"
+  outils-osint:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: outils-osint
+    restart: unless-stopped
     volumes:
       - ./data:/app/data
       - ./config:/app/config
       - ./logs:/app/logs
     environment:
+      - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1
-      - TOR_ENABLED=true
-    depends_on:
-      - tor
-      - redis
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    networks:
+      - osint-network
 
-  tor:
-    image: dperson/torproxy
-    ports:
-      - "9050:9050"
+  osint-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: osint-web
     restart: unless-stopped
-
-  redis:
-    image: redis:alpine
     ports:
-      - "6379:6379"
+      - "5000:5000"
     volumes:
-      - redis_data:/data
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./web:/app/web
     environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-    ports:
-      - "9200:9200"
+      - PYTHONPATH=/app
+      - FLASK_ENV=production
+    depends_on:
+      - outils-osint
+    networks:
+      - osint-network
+
+  redis-cache:
+    image: redis:7-alpine
+    container_name: osint-redis
+    restart: unless-stopped
     volumes:
-      - elastic_data:/usr/share/elasticsearch/data
+      - redis-data:/data
+    networks:
+      - osint-network
 
 volumes:
-  redis_data:
-  elastic_data:
+  redis-data:
+    driver: local
+
+networks:
+  osint-network:
+    driver: bridge
