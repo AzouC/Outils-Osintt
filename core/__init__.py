@@ -5,7 +5,7 @@ Outil d'investigation OSINT avancé avec IA et analyse comportementale
 """
 
 __version__ = "1.0.0"
-__author__ = "OSINT Framework Pro Team"
+__author__ = "AzouC"
 __license__ = "MIT"
 
 from .main import OSINTFramework
